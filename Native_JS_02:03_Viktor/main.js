@@ -12,4 +12,6 @@ const compare = (a , b) => {
     }
 }
 
-console.log(numbers.sort(compare))
+const compare1 = (a , b) => a - b;
+
+console.log(numbers.sort(compare).reverse())
