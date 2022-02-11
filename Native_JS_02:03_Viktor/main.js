@@ -46,5 +46,6 @@ const students = [
 
 //отсортировать студенов по успеваемости
 console.log(students.sort((a, b) => b.scores - a.scores))
-console.log(students.sort((a, b) => b.scores - a.scores))
 
+//alphabetically
+console.log(students.sort((a, b) => a.name <= b.name ? -1 : 1))
