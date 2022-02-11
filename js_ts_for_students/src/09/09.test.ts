@@ -42,3 +42,13 @@ test("array test", () => {
     expect(user[1]).toEqual({name: "Michail", age: 10});
 
 })
+
+test("value type test", () => {
+
+    let userCount = 100;
+    let adminsCount = userCount;
+
+
+    expect(user[1]).toEqual({name: "Michail", age: 10});
+
+})
