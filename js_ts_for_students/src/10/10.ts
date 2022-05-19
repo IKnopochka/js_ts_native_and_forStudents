@@ -36,11 +36,8 @@ export const UpgradeUserLaptop = (object: UserWithLaptopType, name: string) => {
     }
 };
 export const AddNewBookToUser = (object: UserWithBooksType, title: string[]) => {
-
-    const copy = {
+    return {
         ...object,
         books: [...object.books.concat(title)]
-    }
-
-    return copy;
+    };
 };
