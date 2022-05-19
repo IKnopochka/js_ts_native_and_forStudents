@@ -48,3 +48,24 @@ export const AddOneBookToUser = (object: UserWithBooksType, title: string) => {
         books: [...object.books, title]
     };
 };
+export const ChangeOneBookToUser = (object: UserWithBooksType, oldTitle: string, newTitle: string) => {
+
+    /*const copy = {
+        ...object,
+        books: [...object.books],
+    };
+copy.books[copy.books.indexOf(oldTitle)] = newTitle*/
+
+    const copy = {
+        ...object,
+        books: object.books.map(m => {
+            if(m === oldTitle){
+                return newTitle
+            }
+            return m
+        })
+    };
+
+
+    return copy
+};
