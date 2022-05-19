@@ -42,12 +42,9 @@ export const AddNewBookToUser = (object: UserWithBooksType, title: string[]) => 
     };
 };
 export const AddOneBookToUser = (object: UserWithBooksType, title: string) => {
-    const copy = {
+
+    return {
         ...object,
-        books: [...object.books]
+        books: [...object.books, title]
     };
-
-    copy.books.push(title);
-
-    return copy;
 };
