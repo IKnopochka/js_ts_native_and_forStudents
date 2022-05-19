@@ -14,12 +14,11 @@ export type UserWithLaptopType = UserType & {
 }
 
 export const MoveUser = (object: UserWithLaptopType, name: string) => {
-    const copy = {
+    return {
         ...object,
-        address: {...object.address}
+        address: {
+            ...object.address,
+            title: name}
     }
-    copy.address.title = name;
-
-    return copy;
 
 };
