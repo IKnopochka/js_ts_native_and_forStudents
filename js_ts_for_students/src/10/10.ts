@@ -13,6 +13,10 @@ export type UserWithLaptopType = UserType & {
     laptop: LaptopType
 }
 
+export type UserWithBooksType = UserWithLaptopType & {
+    books: string[]
+}
+
 export const MoveUser = (object: UserWithLaptopType, name: string) => {
     return {
         ...object,
@@ -30,4 +34,13 @@ export const UpgradeUserLaptop = (object: UserWithLaptopType, name: string) => {
             title: name
         }
     }
+};
+export const AddNewBookToUser = (object: UserWithBooksType, title: string[]) => {
+
+    const copy = {
+        ...object,
+        books: [...object.books.concat(title)]
+    }
+
+    return copy;
 };

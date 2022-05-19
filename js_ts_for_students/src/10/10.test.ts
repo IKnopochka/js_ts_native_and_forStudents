@@ -1,21 +1,23 @@
-import {MoveUser, UpgradeUserLaptop, UserWithLaptopType} from "./10";
+import {AddNewBookToUser, UserWithBooksType} from "./10";
 
-test ('change address', () => {
-    let user: UserWithLaptopType = {
+test ('add new books to user', () => {
+    let user: UserWithBooksType = {
         name: 'Mouse',
         address: {
             title: 'Cat'
         },
         laptop: {
             title: 'Mac'
-        }
+        },
+        books: ['React', 'css', 'HTML']
     }
 
-    const movedUser = UpgradeUserLaptop(user, 'Mac Pro')
+    const movedUser = AddNewBookToUser(user, ['js', 'ts'])
 
     expect(user).not.toBe(movedUser)
-    expect(user.laptop).not.toBe(movedUser.laptop)
+    expect(user.laptop).toBe(movedUser.laptop)
     expect(user.address).toBe(movedUser.address)
-    expect(movedUser.laptop.title).toBe('Mac Pro')
-    expect(user.laptop.title).toBe('Mac')
+    expect(user.books).not.toBe(movedUser.books)
+    expect(movedUser.books[3]).toBe('js')
+    expect(movedUser.books[4]).toBe('ts')
 })
