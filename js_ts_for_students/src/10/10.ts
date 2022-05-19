@@ -58,14 +58,17 @@ copy.books[copy.books.indexOf(oldTitle)] = newTitle*/
 
     const copy = {
         ...object,
-        books: object.books.map(m => {
-            if(m === oldTitle){
-                return newTitle
-            }
-            return m
-        })
+        books: object.books.map(m => m === oldTitle ? newTitle : m)
     };
 
 
     return copy
+};
+export const RemoveOneBookFromUser = (array: UserWithBooksType, title: string) => {
+
+
+    return {
+        ...array,
+        books: array.books.filter(f => f !== title)
+    };
 };

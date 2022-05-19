@@ -1,4 +1,4 @@
-import {AddOneBookToUser, ChangeOneBookToUser, UserWithBooksType} from "./10";
+import {RemoveOneBookFromUser, UserWithBooksType} from "./10";
 
 test ('add new books to user', () => {
     let user: UserWithBooksType = {
@@ -12,12 +12,13 @@ test ('add new books to user', () => {
         books: ['React', 'css', 'HTML']
     }
 
-    const movedUser = ChangeOneBookToUser(user, 'css', 'ts')
+    const movedUser = RemoveOneBookFromUser(user, 'css')
 
     expect(user).not.toBe(movedUser)
     expect(user.laptop).toBe(movedUser.laptop)
     expect(user.address).toBe(movedUser.address)
     expect(user.books).not.toBe(movedUser.books)
-    expect(movedUser.books[1]).toBe('ts')
-    expect(user.books.length).toBe(3)
+    expect(movedUser.books[1]).toBe('HTML')
+    expect(movedUser.books).toStrictEqual(['React', 'HTML'])
+    expect(movedUser.books.length).toBe(2)
 })
