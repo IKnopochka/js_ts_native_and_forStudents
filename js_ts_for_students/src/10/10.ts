@@ -84,3 +84,14 @@ export const UpdateCompanyTitle = (array: UserWithCompaniesType, id:number, titl
         companies: array.companies.map(m => m.id === id ? {...m, title: title}  : m)
     };
 };
+export const UpdateCompanyTitle2 = (companies: {[key:string] : Array<{
+                                            id: number,
+                                            title: string
+                                        }>},
+                                    userName:string,
+                                    companyId: number,
+                                    newTitle: string) => {
+    /*const copy = {...companies}
+    copy[userName] = copy[userName].map(m => m.id === companyId ? {...m, title: newTitle} : m)*/
+    return {...companies, [userName]: companies[userName].map(m => m.id === companyId ? {...m, title: newTitle} : m)};
+};
