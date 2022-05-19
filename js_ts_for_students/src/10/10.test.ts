@@ -1,7 +1,7 @@
-import {RemoveOneBookFromUser, UserWithBooksType} from "./10";
+import {UpdateCompanyTitle, UserWithBooksType, UserWithCompaniesType} from "./10";
 
 test ('add new books to user', () => {
-    let user: UserWithBooksType = {
+    let user: UserWithBooksType & UserWithCompaniesType = {
         name: 'Mouse',
         address: {
             title: 'Cat'
@@ -9,16 +9,19 @@ test ('add new books to user', () => {
         laptop: {
             title: 'Mac'
         },
-        books: ['React', 'css', 'HTML']
+        books: ['React', 'css', 'HTML'],
+        companies: [
+            {id: 1, title: 'Apple'},
+            {id: 2, title: 'Microsoft'},
+            {id: 2, title: 'Epam'}
+        ]
     }
 
-    const movedUser = RemoveOneBookFromUser(user, 'css')
+    const userCopy = UpdateCompanyTitle(user, 2, 'LinkedIn')
 
-    expect(user).not.toBe(movedUser)
-    expect(user.laptop).toBe(movedUser.laptop)
-    expect(user.address).toBe(movedUser.address)
-    expect(user.books).not.toBe(movedUser.books)
-    expect(movedUser.books[1]).toBe('HTML')
-    expect(movedUser.books).toStrictEqual(['React', 'HTML'])
-    expect(movedUser.books.length).toBe(2)
+    expect(user).not.toBe(userCopy)
+    expect(user.companies).not.toBe(userCopy.companies)
+    expect(user.companies[1].title).toBe('Microsoft')
+    expect(userCopy.companies[1].title).toBe('LinkedIn')
+    expect(userCopy.companies.length).toBe(3)
 })

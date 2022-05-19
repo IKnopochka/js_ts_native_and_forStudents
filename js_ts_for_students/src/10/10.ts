@@ -16,6 +16,12 @@ export type UserWithLaptopType = UserType & {
 export type UserWithBooksType = UserWithLaptopType & {
     books: string[]
 }
+export type UserWithCompaniesType = {
+    companies: Array<{
+        id: number,
+        title: string
+    }>
+}
 
 export const MoveUser = (object: UserWithLaptopType, name: string) => {
     return {
@@ -70,5 +76,11 @@ export const RemoveOneBookFromUser = (array: UserWithBooksType, title: string) =
     return {
         ...array,
         books: array.books.filter(f => f !== title)
+    };
+};
+export const UpdateCompanyTitle = (array: UserWithCompaniesType, id:number, title: string) => {
+    return {
+        ...array,
+        companies: array.companies.map(m => m.id === id ? {...m, title: title}  : m)
     };
 };
