@@ -22,3 +22,12 @@ export const MoveUser = (object: UserWithLaptopType, name: string) => {
     }
 
 };
+export const UpgradeUserLaptop = (object: UserWithLaptopType, name: string) => {
+    return {
+        ...object,
+        laptop: {
+            ...object.laptop,
+            title: name
+        }
+    }
+};

@@ -1,4 +1,4 @@
-import {MoveUser, UserWithLaptopType} from "./10";
+import {MoveUser, UpgradeUserLaptop, UserWithLaptopType} from "./10";
 
 test ('change address', () => {
     let user: UserWithLaptopType = {
@@ -11,11 +11,11 @@ test ('change address', () => {
         }
     }
 
-    const movedUser = MoveUser(user, 'Kitty')
+    const movedUser = UpgradeUserLaptop(user, 'Mac Pro')
 
     expect(user).not.toBe(movedUser)
-    expect(user.address).not.toBe(movedUser.address)
-    expect(user.laptop).toBe(movedUser.laptop)
-    expect(movedUser.address.title).toBe('Kitty')
-    expect(user.address.title).toBe('Cat')
+    expect(user.laptop).not.toBe(movedUser.laptop)
+    expect(user.address).toBe(movedUser.address)
+    expect(movedUser.laptop.title).toBe('Mac Pro')
+    expect(user.laptop.title).toBe('Mac')
 })
