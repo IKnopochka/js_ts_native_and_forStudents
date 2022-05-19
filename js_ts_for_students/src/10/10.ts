@@ -41,3 +41,13 @@ export const AddNewBookToUser = (object: UserWithBooksType, title: string[]) => 
         books: [...object.books.concat(title)]
     };
 };
+export const AddOneBookToUser = (object: UserWithBooksType, title: string) => {
+    const copy = {
+        ...object,
+        books: [...object.books]
+    };
+
+    copy.books.push(title);
+
+    return copy;
+};
