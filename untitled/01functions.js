@@ -15,4 +15,5 @@ function doubleInteger(i) {
 
 function validatePIN (pin) {
     //return true or false
+
 }
